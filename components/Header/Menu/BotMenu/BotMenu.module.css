@@ -1,0 +1,53 @@
+.menu {
+  display: flex;
+}
+.subMenu {
+  @apply bg-white shadow;
+  padding: 0.8rem 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+  min-width: 165px;
+  display: none;
+  animation: growdown 200ms ease-in-out forwards;
+  transform-origin: top center;
+}
+.subMenu .link {
+  @apply py-2 px-4 text-gray-600;
+}
+.subMenu .link:hover {
+  @apply text-green;
+}
+
+.item {
+  position: relative;
+  margin-right: 5px;
+}
+
+.item:hover .subMenu {
+  display: block !important;
+}
+.link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  transition: 0.3s;
+}
+.link:hover {
+  @apply text-yellow-200;
+}
+
+@keyframes growdown {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}

@@ -1,0 +1,261 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url("https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(
+    #00000080,
+    #00000040,
+    #00000030,
+    #00000020,
+    #00000010,
+    #00000010,
+    #00000080
+  );
+
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+@layer base {
+  html {
+    font-family: "Faustina";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+body {
+  @apply bg-gray-100 text-sm text-gray-600;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  @apply transition duration-300;
+}
+a:focus-visible {
+  outline-color: transparent;
+}
+
+/* remove arrow input number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+.btn--df {
+  @apply inline-flex items-center justify-center border text-center transition duration-300;
+}
+.btn--green {
+  @apply border-transparent bg-green text-white;
+}
+.btn--green:hover {
+  @apply border-green bg-white text-green;
+}
+
+.btn--close {
+  @apply border-gray-200;
+}
+
+.btn--close:hover {
+  @apply bg-gray-200;
+}
+
+.link--green:hover {
+  @apply text-green;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.dropdown-list {
+  animation: growdown 0.3s;
+  transform-origin: top center;
+}
+
+@keyframes growdown {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.form-float {
+  @apply relative;
+}
+.form-float > label {
+  @apply absolute left-[1rem] top-1/2 z-10 -translate-y-1/2 transition duration-200;
+}
+.form-float > input::placeholder {
+  color: transparent;
+}
+
+.form-float > input {
+  @apply w-full border border-gray-100 pr-2 pb-2 pl-4 pt-6 transition duration-300 hover:border-green focus:border-green;
+}
+
+.form-float > input:focus ~ label,
+.form-float > input:not(:placeholder-shown) ~ label {
+  transform: scale(0.85) translateY(-1.5rem) translateX(-0.15rem) !important;
+  @apply text-green opacity-70;
+}
+
+.custom-swiper:hover .swiper-button-prev,
+.custom-swiper:hover .swiper-button-next {
+  @apply opacity-100;
+}
+
+.custom-swiper .swiper-button-prev,
+.custom-swiper .swiper-button-next {
+  @apply inline-flex h-[30px] w-[30px] items-center justify-center rounded-full bg-white bg-opacity-70 opacity-0 transition-all duration-300;
+}
+
+.custom-swiper .swiper-button-prev::after,
+.custom-swiper .swiper-button-next::after {
+  @apply relative z-10 text-sm font-bold text-green;
+}
+
+.swiper-thumb .swiper-slide {
+  @apply opacity-50 transition-all duration-300;
+}
+
+.swiper-thumb .swiper-slide-thumb-active {
+  @apply opacity-100;
+}
+
+.input--df {
+  @apply w-full rounded-none border border-gray-100 transition-all duration-300 hover:border-green focus:border-green;
+}
+
+.input--error {
+  @apply !border-red-100;
+}
+
+.custom-select {
+  @apply !outline-0;
+}
+.custom-select .react-select__control {
+  @apply input--df shadow-none;
+}
+
+.custom-select--error .react-select__control {
+  @apply input--error;
+}
+
+.custom-select .react-select__value-container {
+  @apply p-2 !outline-0;
+}
+
+.custom-select .react-select__single-value {
+  @apply m-0;
+}
+
+.custom-select .react-select__input-container {
+  @apply m-0 p-0;
+}
+
+.custom-select .react-select__menu {
+  @apply rounded-none;
+}
+
+.custom-select .react-select__option {
+  @apply cursor-pointer transition-all duration-200;
+}
+
+.custom-select .react-select__option--is-selected {
+  @apply !bg-green;
+}
+
+.custom-select .react-select__option--is-focused {
+  @apply bg-semigreen;
+}
