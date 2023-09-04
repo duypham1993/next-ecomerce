@@ -3,7 +3,7 @@ import PrivateRoute from "@/components/PrivateRoute";
 import { formatCurrency } from "@/services/formatCurrency";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import Loading from "../../components/Loading/Loading";
+import Loading from "@/components/Loading/Loading";
 
 const CartPage = () => {
   const { cart, isLoading } = useSelector((state) => state.cart);

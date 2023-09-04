@@ -5,7 +5,7 @@ import { loginGoogleCallback } from "@/store/slices/authSlice";
 
 const GoogleCallback = () => {
   const dispatch = useDispatch();
-  const router = useRouter;
+  const router = useRouter();
   const code = router.query;
   useEffect(() => {
     code &&

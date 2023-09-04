@@ -6,6 +6,7 @@ import { syncCurrentUser } from "@/store/slices/authSlice";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FacebookPixel from "./FacebookPixel";
 
 const Header = dynamic(() => import("./Header/Header"));
 const Footer = dynamic(() => import("./Footer/Footer"));
@@ -26,6 +27,7 @@ export default function Layout({ children }) {
     <>
       <Header />
       <main>{children}</main>
+      <FacebookPixel />
       <Footer />
     </>
   );
