@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect, useState } from "react";
-import * as pixel from "@/lib/fpixel";
+import * as pixel from "@/lib/fbpixel";
 
 const FacebookPixel = () => {
   const [loaded, setLoaded] = useState(false);
